@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1= title
+  - const electricappliances = ['electricitems','company','price']
+  script.
+    function buy(index)
+        {
+            alert(`You played game ${index+1}`)
+        }
+  - const results = [{ electricitems: "mobile", company: "redmi", price: "300" },{ electricitems: "laptop", company: "hp", price: "1200" },{ electricitems: "fan", company: "usha", price: "1000" }]
+  div(class='container-fluid')
+    div(class='row')
+      each result,index in results
+        div(class='col-sm-2' onclick =`buy(${index})`)
+          p electricitems: #{result.electricitems}
+          p company: #{result.company}
+          p price: #{result.price}
