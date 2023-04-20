@@ -2,10 +2,12 @@ body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
-
+a{
+  color:bisque;
+}
 
 .electricappliancesAttr {
-  background-color: rgb(51, 177, 135);
+  background-color: rgb(177, 51, 51);
   width: 120px;
  }
 
