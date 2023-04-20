@@ -24,7 +24,7 @@ var usersRouter = require('./routes/users');
 var electricappliancesRouter = require('./routes/electricappliances');
 var boardRouter = require('./routes/board');
 var selectorRouter=require('./routes/selector');
-var electricappliances = require("./models/electricappliances");
+var Electricappliances = require("./models/electricappliances");
 var resourceRouter = require("./routes/resource");
 
 
@@ -70,12 +70,12 @@ app.use(function(err, req, res, next) {
  
  // We can seed the collection if needed on
  
- function recreateDB(){
+async function recreateDB(){
 // Delete everything
-electricappliances.deleteMany();
+await Electricappliances.deleteMany();
 
 let instance1 = new
-electricappliances({electricitems:"mobile", company:'redmi',
+Electricappliances({electricitems:"mobile", company:'redmi',
 price:300});
 instance1.save().then(doc=>{
 console.log("First object saved")}
@@ -83,7 +83,7 @@ console.log("First object saved")}
 console.error(err)
 });
 let instance2 = new
-electricappliances({electricitems:"laptop", company:'hp',
+Electricappliances({electricitems:"laptop", company:'hp',
 price:1200});
 instance2.save().then(doc=>{
 console.log("second object saved")}
@@ -91,7 +91,7 @@ console.log("second object saved")}
 console.error(err)
 });
 let instance3= new
-electricappliances({electricitems:"fan", company:'usha',
+Electricappliances({electricitems:"fan", company:'usha',
 price:1000});
 instance3.save().then(doc=>{
 console.log("third object saved")}

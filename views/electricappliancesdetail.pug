@@ -1,0 +1,26 @@
+extends layout
+
+block content
+h1= title
+
+  if (toShow==null)
+   h2 No Instance to detail
+  else
+   - let electricappliancesid = toShow._id 
+   - let electricitems = toShow.electricitems 
+   - let company = toShow.company 
+   - let price = toShow.price
+    div 
+      div.row 
+        div(class='electricappliancesAttr mr-3') electricappliances id is: 
+        div #{electricappliancesid}
+        
+      div.row 
+        div(class='electricappliancesAttr mr-3') electricitems is: 
+        div #{electricitems} 
+      div.row 
+        div(class='electricappliancesAttr mr-3')  company is: 
+        div #{company} 
+      div.row 
+        div(class='electricappliancesAttr mr-3') price is: 
+        div #{price}
