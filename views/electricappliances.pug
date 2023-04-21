@@ -2,16 +2,20 @@ extends layout
 
 block content
   h1= title
-  script.
-    function buy(index)
-        {
-            alert(`You played game ${index+1}`)
-        }
+
   - const resul = results
   div(class='container-fluid')
     div(class='row')
       each result,index in resul
-        div(class='col-sm-2' onclick =`buy(${index})`)
+        - let destination = `dispatch(\"/electricappliances/update?id=${result._id}\")`
+        div(class="col-sm-2" class="m-1") 
           p electricitems: #{result.electricitems}
           p company: #{result.company}
           p price: #{result.price}
+          button.btn( class="btn-primary ml-1", onclick= destination) Update
+
+  script. 
+        function dispatch(path){
+          console.log(path);
+          window.location.href=path;
+        }
