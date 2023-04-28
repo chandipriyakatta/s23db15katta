@@ -2,20 +2,29 @@ extends layout
 
 block content
   h1= title
-
-  - const resul = results
-  div(class='container-fluid')
-    div(class='row')
-      each result,index in resul
-        - let destination = `dispatch(\"/electricappliances/update?id=${result._id}\")`
-        div(class="col-sm-2" class="m-1") 
-          p electricitems: #{result.electricitems}
-          p company: #{result.company}
-          p price: #{result.price}
+  <br>
+   - let Create = `dispatch(\"/electricappliances/create\")`
+   button.btn( class="btn-primary ml-1", onclick= Create) Create
+  - let items = results;
+  div(class="container-fluid")
+    div(class="row")
+      each item,index in items
+        - let destination = `dispatch(\"/electricappliances/update?id=${item._id}\")`
+        - let detail = `dispatch(\"/electricappliances/detail?id=${item._id}\")`
+        - let Delete = `dispatch(\"/electricappliances/delete?id=${item._id}\")`
+        div(class="col-sm-2" class="m-1")
+          h3 #{item.brand}
+          p #{item.color}
+          p #{item.price}
           button.btn( class="btn-primary ml-1", onclick= destination) Update
-
-  script. 
-        function dispatch(path){
-          console.log(path);
-          window.location.href=path;
-        }
+          br
+          br
+          button.btn( class="btn-secondary ml-1", onclick= detail) Details
+          br
+          br
+          button.btn( class="btn-danger ml-1", onclick= Delete) Delete
+  script.
+    function dispatch(path){
+      console.log(path);
+      window.location.href=path;
+    }
